@@ -1,0 +1,31 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. CBCALCULATOR.
+AUTHOR. SAEEDMALIK.
+
+DATA DIVISION.
+WORKING-STORAGE SECTION. 
+01 FirstNumber 	PIC 9(2)	VALUE ZEROS.
+01 SecondNumber PIC 9 		VALUE ZEROS.
+01 Result 	PIC 99 		VALUE ZEROS.  
+01 Modifier	PIC X		VALUE SPACE.
+
+PROCEDURE DIVISION.
+Begin. 
+	DISPLAY "ENTER TWO NUMBER, ONE AFTER THE OTHER, FOLLOWED BY A MODIFIER * - + /".
+	ACCEPT FirstNumber.
+	ACCEPT SecondNumber.
+	ACCEPT MODIFIER.
+	IF Modifier = "+" THEN 
+		ADD FirstNumber, SecondNumber GIVING Result
+	END-IF
+	IF Modifier = "*" THEN 
+		MULTIPLY FirstNumber BY SecondNumber GIVING Result
+	END-IF
+	IF Modifier = "-" THEN 
+		SUBTRACT FirstNumber FROM SecondNumber GIVING Result
+	END-IF
+	IF Modifier = "/" THEN
+		DIVIDE FirstNumber BY SecondNumber GIVING Result
+	END-IF
+	DISPLAY Result.
+	STOP RUN.
